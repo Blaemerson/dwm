@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# echo $1
+ln -sf $1 $HOME/.local/share/wallpaper
+feh --no-fehbg --bg-fill $HOME/.local/share/wallpaper &

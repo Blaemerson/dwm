@@ -16,7 +16,12 @@ get_battery_status() {
 }
 
 get_charging_status() {
-    cat "/sys/class/power_supply/$battery/status"
+    charging_status=`cat "/sys/class/power_supply/$battery/status"`
+    if [ $charging_status = "Discharging" ]; then
+        echo ""
+    else
+        echo " "
+    fi
 }
 
 get_charge() {
@@ -24,20 +29,33 @@ get_charge() {
 }
 
 get_datetime() {
-    date +"%a %d %b %Y | %I:%M %p %Z"
+    date +"%a %d %b %Y │ %I:%M %p %Z"
 }
+
+get_mpd_status() {
+    song="$(mpc current)"
+    echo ""$song""
+}
+
 
 get_status() {
     battery_status="";
     if $(has_battery); then
-        battery_status=" $(get_battery_status) |";
+        battery_status="$(get_battery_status) $(get_charging_status)│";
+    fi
+    mpd_status="$(get_mpd_status)";
+    if [ ! -z "$mpd_status" ]; then
+        mpd_status=" $mpd_status │";
+    else
+        mpd_status="";
     fi
 
-    echo "${battery_status} $(get_datetime)";
+    echo "${mpd_status} ${battery_status} $(get_datetime)";
 }
+
 
 while true
 do
     xsetroot -name "$(get_status)";
-    sleep 1m;
+    sleep 30s;
 done
