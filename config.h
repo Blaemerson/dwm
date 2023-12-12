@@ -37,7 +37,7 @@ static const char *const autostart[] = {
     "xset", "r", "rate", "400", "45", NULL,
     "greenclip", "daemon", NULL,
 	"picom", NULL,
-	"setbg", "/home/blake/Pictures/wallpapers/wallpaper.png", NULL,
+	"setbg", "/home/blake/Pictures/wallpapers/wallpaper.jpg", NULL,
     // "feh", "--bg-max", "$HOME/.local/share/wallpaper", NULL,
 	NULL /* terminate */
 };
