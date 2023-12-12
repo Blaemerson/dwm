@@ -46,8 +46,8 @@ static const char *const autostart[] = {
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
-static const char ptagf[] = "[%s %s]";	/* format of a tag label */
-static const char etagf[] = "[%s]";	/* format of an empty tag */
+static const char ptagf[] = "%s %s";	/* format of a tag label */
+static const char etagf[] = "%s";	/* format of an empty tag */
 static const int lcaselbl = 0;		/* 1 means make tag label lowercase */	
 
 static const Rule rules[] = {
@@ -155,7 +155,7 @@ static Button buttons[] = {
 	 * to control these separately (i.e. to retain the feature to move a tiled window
 	 * into a floating position).
 	 */
-	{ ClkClientWin,         MODKEY,         Button1,        moveorplace,    {.i = 2} },
+	{ ClkClientWin,         MODKEY,         Button1,        moveorplace,    {.i = 0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
